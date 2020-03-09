@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesWeb", "SalesWeb\SalesWeb.csproj", "{84FB27D6-978C-4804-B76E-EB7CE0D67695}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesWeb.Infra", "SalesWeb.Database\SalesWeb.Infra.csproj", "{32854BB5-A08E-42CC-871E-2F5CFA10F0F8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesWeb.Infra", "SalesWeb.Infra\SalesWeb.Infra.csproj", "{32854BB5-A08E-42CC-871E-2F5CFA10F0F8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesWeb.Domain", "SalesWeb.Domain\SalesWeb.Domain.csproj", "{FC62DA85-B03D-4382-B29E-5F3CF259A9B6}"
 EndProject
