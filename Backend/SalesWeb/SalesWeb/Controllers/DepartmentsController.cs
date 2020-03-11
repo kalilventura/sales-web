@@ -12,6 +12,7 @@ namespace SalesWeb.Controllers
     [ApiController]
     public class DepartmentsController : ControllerBase
     {
+        
         [HttpGet]
         public async Task<IActionResult> GetAllDepartments()
         {
@@ -19,7 +20,7 @@ namespace SalesWeb.Controllers
         }
 
         [HttpGet("{departmentId}")]
-        public async Task<IActionResult> getDepartmentById(Guid departmentId)
+        public async Task<IActionResult> GetDepartmentById(Guid departmentId)
         {
             return Ok();
         }
