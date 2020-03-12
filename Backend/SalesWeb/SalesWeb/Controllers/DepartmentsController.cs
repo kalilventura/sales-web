@@ -28,7 +28,7 @@ namespace SalesWeb.Controllers
         [HttpPost]
         public async Task<IActionResult> AddDepartment(DepartmentDTO department)
         {
-            return Ok();
+            return Ok("Deu certo");
         }
 
         [HttpPut("{departmentId}")]
