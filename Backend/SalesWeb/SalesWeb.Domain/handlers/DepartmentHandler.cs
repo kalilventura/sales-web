@@ -76,18 +76,18 @@ namespace SalesWeb.Domain.Handlers
             }
         }
 
-        public async Task<IGenericResult> Update(Department entity)
+        public async Task<IGenericResult> Update(Guid id)
         {
             try
             {
-                var result = await DepartmentExists(entity.Name);
+                var department = await _departmentRepository.FindById(id);
 
-                if (!result.Item2)
-                    return new GenericResult(false, "Department not exists");
+                if (department == null)
+                    return new GenericResult(false, "Departamento não existe.");
 
-                await _departmentRepository.Update(result.Item1);
+                await _departmentRepository.Update(department);
 
-                return new GenericResult(true, "Department deletado com sucesso.");
+                return new GenericResult(true, "Departamento deletado com sucesso.");
             }
             catch (Exception ex)
             {

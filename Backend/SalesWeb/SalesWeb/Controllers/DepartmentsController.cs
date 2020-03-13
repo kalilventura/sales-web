@@ -37,12 +37,13 @@ namespace SalesWeb.Controllers
         [HttpPost]
         public async Task<IActionResult> AddDepartment(DepartmentDTO department)
         {
-            return Ok("Deu certo");
+            return Ok();
         }
 
         [HttpPut("{departmentId}")]
         public async Task<IActionResult> AlterDepartment(Guid departmentId)
         {
+            var result = await departmentHandler.Update(departmentId);
             return Ok();
         }
 
