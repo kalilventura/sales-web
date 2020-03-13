@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace SalesWeb.Infra.Repositories
 {
@@ -37,6 +38,11 @@ namespace SalesWeb.Infra.Repositories
         public async Task<Department> FindById(Guid id)
         {
             return await _context.Department.FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        public async Task<Department> FindDepartmentByName(string departmentName)
+        {
+            return await _context.Department.FirstOrDefaultAsync(x => x.Name.Equals(departmentName));
         }
 
         public async Task Update(Department entity)

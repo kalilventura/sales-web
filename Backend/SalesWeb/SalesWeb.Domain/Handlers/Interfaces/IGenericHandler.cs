@@ -6,10 +6,10 @@ namespace SalesWeb.Domain.Handlers.Interfaces
 {
     public interface IGenericHandler<T> where T : class
     {
-        Task<IEnumerable<T>> FindAll();
-        Task<T> FindById(Guid id);
-        Task Add(T entity);
-        Task Update(T entity);
-        Task Delete(T entity);
+        Task<IGenericResult> FindAll();
+        Task<IGenericResult> FindById(Guid id);
+        Task<IGenericResult> Add(T entity);
+        Task<IGenericResult> Update(T entity);
+        Task<IGenericResult> Delete(T entity);
     }
 }

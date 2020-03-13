@@ -13,7 +13,7 @@ namespace SalesWeb.Domain.Entities
         public Department Department { get; set; }
         public int DepartmentId { get; set; }
         //public ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
-        private ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
+        //private ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
 
         public Seller() { }
 
@@ -26,19 +26,19 @@ namespace SalesWeb.Domain.Entities
             Department = department;
         }
 
-        public void AddSales(SalesRecord salesRecord)
-        {
-            Sales.Add(salesRecord);
-        }
+        //public void AddSales(SalesRecord salesRecord)
+        //{
+        //    Sales.Add(salesRecord);
+        //}
 
-        public void RemoveSales(SalesRecord salesRecord)
-        {
-            Sales.Remove(salesRecord);
-        }
+        //public void RemoveSales(SalesRecord salesRecord)
+        //{
+        //    Sales.Remove(salesRecord);
+        //}
 
-        public double TotalSales(DateTime initial, DateTime final)
-        {
-            return Sales.Where(sr => sr.Date >= initial && sr.Date <= final).Sum(sr => sr.Amount);
-        }
+        //public double TotalSales(DateTime initial, DateTime final)
+        //{
+        //    return Sales.Where(sr => sr.Date >= initial && sr.Date <= final).Sum(sr => sr.Amount);
+        //}
     }
 }

@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SalesWeb.Domain.Handlers.Interfaces;
 using SalesWeb.DTO;
 
 namespace SalesWeb.Controllers
@@ -12,17 +11,27 @@ namespace SalesWeb.Controllers
     [ApiController]
     public class DepartmentsController : ControllerBase
     {
-        
+        private readonly IDepartmentHandler departmentHandler;
+
+        public DepartmentsController(IDepartmentHandler departmentHandler)
+        {
+            this.departmentHandler = departmentHandler;
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetAllDepartments()
         {
-            return Ok();
+            var departments = await departmentHandler.FindAll();
+
+            return Ok(departments);
         }
 
         [HttpGet("{departmentId}")]
         public async Task<IActionResult> GetDepartmentById(Guid departmentId)
         {
-            return Ok();
+            var departments = await departmentHandler.FindById(departmentId);
+
+            return Ok(departments);
         }
 
         [HttpPost]
