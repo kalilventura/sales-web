@@ -1,16 +1,25 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using SalesWeb.Domain.Handlers;
+using System.Linq;
 
 namespace SalesWeb.Filters
 {
-    public class ValidatorActionFilter : IActionFilter
+    public sealed class ValidatorActionFilter : ActionFilterAttribute
     {
-        public void OnActionExecuting(ActionExecutingContext filterContext)
+        public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             if (!filterContext.ModelState.IsValid)
-                filterContext.Result = new BadRequestObjectResult(filterContext.ModelState);
-        }
+            {
+                var errors = filterContext.ModelState
+                                .Values
+                                .Where(v => v.Errors.Count > 0)
+                                .SelectMany(v => v.Errors)
+                                .Select(v => v.ErrorMessage);
 
-        public void OnActionExecuted(ActionExecutedContext filterContext) { }
+                var result = new GenericResult(false, "One or more validation errors occurred.", errors);
+                filterContext.Result = new BadRequestObjectResult(result);
+            }
+        }
     }
 }

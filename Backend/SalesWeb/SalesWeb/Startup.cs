@@ -1,6 +1,7 @@
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -41,13 +42,16 @@ namespace SalesWeb
                    }));
 
             services
-                .AddControllers(
-                //x =>
-                //{
-                //    x.Filters.Add(typeof(ValidatorActionFilter));
-                //}
-                )
+                .AddControllers(x =>
+                {
+                    x.Filters.Add(typeof(ValidatorActionFilter));
+                })
                 .AddFluentValidation(fvc => fvc.RegisterValidatorsFromAssemblyContaining<Startup>());
+
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
 
             services.AddTransient<IDepartmentHandler, DepartmentHandler>();
             services.AddTransient<IDepartmentRepository, DepartmentRepository>();
