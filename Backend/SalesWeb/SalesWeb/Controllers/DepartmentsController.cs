@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SalesWeb.Domain.Entities;
 using SalesWeb.Domain.Handlers.Interfaces;
 using SalesWeb.DTO;
 
 namespace SalesWeb.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class DepartmentsController : ControllerBase
     {
         private readonly IDepartmentHandler departmentHandler;
@@ -22,7 +22,6 @@ namespace SalesWeb.Controllers
         public async Task<IActionResult> GetAllDepartments()
         {
             var departments = await departmentHandler.FindAll();
-
             return Ok(departments);
         }
 
@@ -30,27 +29,29 @@ namespace SalesWeb.Controllers
         public async Task<IActionResult> GetDepartmentById(Guid departmentId)
         {
             var departments = await departmentHandler.FindById(departmentId);
-
             return Ok(departments);
         }
 
         [HttpPost]
         public async Task<IActionResult> AddDepartment(DepartmentDTO department)
         {
-            return Ok();
+            var newDepartment = new Department(department.Name);
+            var result = await departmentHandler.Add(newDepartment);
+            return Ok(result);
         }
 
         [HttpPut("{departmentId}")]
         public async Task<IActionResult> AlterDepartment(Guid departmentId)
         {
             var result = await departmentHandler.Update(departmentId);
-            return Ok();
+            return Ok(result);
         }
 
         [HttpDelete("{departmentId}")]
         public async Task<IActionResult> DeleteDepartment(Guid departmentId)
         {
-            return Ok();
+            var result = await departmentHandler.Delete(departmentId);
+            return Ok(result);
         }
     }
 }

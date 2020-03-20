@@ -2,12 +2,20 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using SalesWeb.DTO;
+using SalesWeb.Domain.Handlers;
 using System;
 using System.Threading.Tasks;
 
 namespace SalesWeb.Middlewares
 {
+    /// <summary>
+    /// Register Exception Middleware
+    /// </summary>
+    public static class ExceptionHandlerMiddlewareExtensions
+    {
+        public static IApplicationBuilder UseExceptionHandlerMiddleware(this IApplicationBuilder builder) => builder.UseMiddleware<ExceptionHandlerMiddleware>();
+    }
+
     public class ExceptionHandlerMiddleware
     {
         private readonly RequestDelegate _next;
@@ -23,25 +31,27 @@ namespace SalesWeb.Middlewares
         {
             try
             {
-                _logger.LogInformation($@"Path: {httpContext.Request.Path}");
                 await _next(httpContext);
             }
             catch (Exception ex)
             {
-                var result = new Result();
-                result.Messages.Add(ex.Message);
-                var jsonResponse = JsonConvert.SerializeObject(result);
-
-                httpContext.Response.Clear();
-                httpContext.Response.StatusCode = StatusCodes.Status500InternalServerError;
-                _logger.LogCritical(ex.Message);
-                await httpContext.Response.WriteAsync(jsonResponse);
+                _logger.LogCritical($"Unexpected error: {ex}");
+                await HandleExceptionAsync(httpContext, ex);
             }
         }
-    }
 
-    public static class ExceptionHandlerMiddlewareExtensions
-    {
-        public static IApplicationBuilder UseExceptionHandlerMiddleware(this IApplicationBuilder builder) => builder.UseMiddleware<ExceptionHandlerMiddleware>();
+        private static Task HandleExceptionAsync(HttpContext httpContext, Exception exception)
+        {
+            var genericresult = new GenericResult(false, exception.Message, exception);
+
+            var jsonResponse = JsonConvert.SerializeObject(genericresult);
+
+            httpContext.Response.Clear();
+            httpContext.Response.ContentType = "application/json";
+            httpContext.Response.StatusCode = StatusCodes.Status500InternalServerError;
+
+            return httpContext.Response.WriteAsync(jsonResponse);
+        }
+
     }
 }

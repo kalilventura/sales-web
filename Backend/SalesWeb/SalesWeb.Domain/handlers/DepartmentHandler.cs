@@ -29,11 +29,15 @@ namespace SalesWeb.Domain.Handlers
             }
         }
 
-        public async Task<IGenericResult> Delete(Department entity)
+        public async Task<IGenericResult> Delete(Guid departmentId)
         {
             try
             {
-                await _departmentRepository.Delete(entity);
+                var department = await _departmentRepository.FindById(departmentId);
+                if (department == null)
+                    return new GenericResult(false, "Departamento não existe.");
+
+                await _departmentRepository.Delete(department);
                 return new GenericResult(true, "Departamento inserido com sucesso.", null);
             }
             catch (Exception ex)
