@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SalesWeb.Domain.Entities;
 using SalesWeb.Domain.Repositories;
-using SalesWeb.Infra.Database;
 
 namespace SalesWeb.Infra.Repositories
 {

@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SalesWeb.Database;
+using SalesWeb.Infra.Repositories;
 
-namespace SalesWeb.Migrations
+namespace SalesWeb.Infra.Migrations
 {
     [DbContext(typeof(SalesContext))]
     partial class SalesContextModelSnapshot : ModelSnapshot

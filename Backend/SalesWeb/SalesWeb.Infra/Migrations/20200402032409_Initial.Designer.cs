@@ -5,12 +5,12 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SalesWeb.Database;
+using SalesWeb.Infra.Repositories;
 
-namespace SalesWeb.Migrations
+namespace SalesWeb.Infra.Migrations
 {
     [DbContext(typeof(SalesContext))]
-    [Migration("20200402030105_Initial")]
+    [Migration("20200402032409_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

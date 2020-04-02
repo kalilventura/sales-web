@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SalesWeb.Domain\SalesWeb.Domain.csproj" />
+    <ProjectReference Include="..\SalesWeb.Infra\SalesWeb.Infra.csproj" />
   </ItemGroup>
 
 

@@ -7,8 +7,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SalesWeb.Configurations;
-using SalesWeb.Database;
 using SalesWeb.Filters;
+using SalesWeb.Infra.Repositories;
 using SalesWeb.Middlewares;
 
 namespace SalesWeb
@@ -25,7 +25,17 @@ namespace SalesWeb
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<SalesContext>();
+            //services.AddDbContext<SalesContext>();
+
+            string connectionString = Configuration["ConnectionStrings:SqlServer"];
+            services.AddDbContext<SalesContext>(optionsBuilder =>
+            optionsBuilder
+                .UseSqlServer(connectionString,
+                    options =>
+                    {
+                        options.EnableRetryOnFailure(2);
+                        options.MigrationsAssembly("SalesWeb.Infra");
+                    }));
 
             services
                 .AddControllers(x =>

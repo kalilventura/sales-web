@@ -2,7 +2,7 @@
 using SalesWeb.Domain.Handlers;
 using SalesWeb.Domain.Handlers.Interfaces;
 using SalesWeb.Domain.Repositories;
-using SalesWeb.Repositories;
+using SalesWeb.Infra.Repositories;
 
 namespace SalesWeb.Configurations
 {

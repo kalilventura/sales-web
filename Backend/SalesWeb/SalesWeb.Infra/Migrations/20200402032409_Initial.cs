@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace SalesWeb.Migrations
+namespace SalesWeb.Infra.Migrations
 {
     public partial class Initial : Migration
     {

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace SalesWeb.Repositories
+namespace SalesWeb.Infra.Repositories
 {
     public class DepartmentRepository : IDepartmentRepository
     {
