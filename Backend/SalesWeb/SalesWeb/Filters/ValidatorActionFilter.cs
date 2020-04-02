@@ -18,6 +18,7 @@ namespace SalesWeb.Filters
                                 .Select(v => v.ErrorMessage);
 
                 var result = new GenericResult(false, "One or more validation errors occurred.", errors);
+
                 filterContext.Result = new BadRequestObjectResult(result);
             }
         }

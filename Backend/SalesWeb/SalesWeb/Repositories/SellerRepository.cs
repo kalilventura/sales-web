@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SalesWeb.Domain.Entities;
 using SalesWeb.Domain.Repositories;
-using SalesWeb.Infra.Database;
+using SalesWeb.Database;
 
-namespace SalesWeb.Infra.Repositories
+namespace SalesWeb.Repositories
 {
     public class SellerRepository : ISellerRepository
     {

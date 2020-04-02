@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using SalesWeb.Database;
 using SalesWeb.Domain.Entities;
 using SalesWeb.Domain.Repositories;
-using SalesWeb.Infra.Database;
 
-namespace SalesWeb.Infra.Repositories
+namespace SalesWeb.Repositories
 {
     public class SalesRecordRepository : ISalesRecordRepository
     {

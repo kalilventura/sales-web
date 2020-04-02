@@ -6,15 +6,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
-using SalesWeb.Domain.Handlers;
-using SalesWeb.Domain.Handlers.Interfaces;
-using SalesWeb.Domain.Repositories;
+using SalesWeb.Configurations;
+using SalesWeb.Database;
 using SalesWeb.Filters;
-using SalesWeb.Infra.Database;
-using SalesWeb.Infra.Repositories;
 using SalesWeb.Middlewares;
-using System;
 
 namespace SalesWeb
 {
@@ -30,16 +25,7 @@ namespace SalesWeb
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services
-                .AddDbContext<Context>(option =>
-                   option.UseMySql(Configuration["ConnectionStrings:MySQLConnectionString"],
-                   mySqlOptions =>
-                   {
-                       mySqlOptions.ServerVersion(new Version(8, 5), ServerType.MySql);
-                       mySqlOptions.EnableRetryOnFailure(2);
-                       mySqlOptions.CharSetBehavior(CharSetBehavior.AppendToAllColumns);
-                       mySqlOptions.MigrationsAssembly("SalesWeb.Infra");
-                   }));
+            services.AddDbContext<SalesContext>();
 
             services
                 .AddControllers(x =>
@@ -53,8 +39,7 @@ namespace SalesWeb
                 options.SuppressModelStateInvalidFilter = true;
             });
 
-            services.AddTransient<IDepartmentHandler, DepartmentHandler>();
-            services.AddTransient<IDepartmentRepository, DepartmentRepository>();
+            services.AddServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
