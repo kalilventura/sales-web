@@ -25,12 +25,9 @@ namespace SalesWeb
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<SalesContext>();
-
-            string connectionString = Configuration["ConnectionStrings:SqlServer"];
             services.AddDbContext<SalesContext>(optionsBuilder =>
             optionsBuilder
-                .UseSqlServer(connectionString,
+                .UseSqlServer(Configuration["ConnectionStrings:SqlServer"],
                     options =>
                     {
                         options.EnableRetryOnFailure(2);
