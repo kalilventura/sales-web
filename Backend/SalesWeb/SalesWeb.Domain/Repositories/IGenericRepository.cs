@@ -9,8 +9,8 @@ namespace SalesWeb.Domain.Repositories
     {
         Task<IEnumerable<T>> FindAll();
         Task<T> FindById(Guid id);
-        Task Add(T entity);
-        Task Update(T entity);
+        Task<T> Add(T entity);
+        Task<T> Update(T entity);
         Task Delete(T entity);
     }
 }

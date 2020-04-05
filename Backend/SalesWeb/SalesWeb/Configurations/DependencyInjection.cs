@@ -10,7 +10,8 @@ namespace SalesWeb.Configurations
     {
         private static void AddRepositories(this IServiceCollection services)
         {
-            services.AddTransient<IDepartmentRepository, DepartmentRepository>();
+            services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
         }
 
         private static void AddHandlers(this IServiceCollection services)

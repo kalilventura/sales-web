@@ -8,31 +8,9 @@ using SalesWeb.Domain.Repositories;
 
 namespace SalesWeb.Infra.Repositories
 {
-    public class SalesRecordRepository : ISalesRecordRepository
+    public class SalesRecordRepository : GenericRepository<SalesRecord>, ISalesRecordRepository
     {
-        private readonly SalesContext _context;
-
-        public SalesRecordRepository(SalesContext context)
-        {
-            _context = context;
-        }
-
-        public async Task Add(SalesRecord entity)
-        {
-            await _context.SalesRecord.AddAsync(entity);
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task Delete(SalesRecord entity)
-        {
-            _context.SalesRecord.Remove(entity);
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task<IEnumerable<SalesRecord>> FindAll()
-        {
-            return await _context.SalesRecord.ToListAsync();
-        }
+        public SalesRecordRepository(SalesContext context) : base(context) { }
 
         public async Task<IEnumerable<SalesRecord>> FindByDateAsync(DateTime? minDate, DateTime? maxDate)
         {
@@ -67,17 +45,6 @@ namespace SalesWeb.Infra.Repositories
                 .OrderByDescending(x => x.Date)
                 .GroupBy(x => x.Seller.Department)
                 .ToListAsync();
-        }
-
-        public async Task<SalesRecord> FindById(Guid id)
-        {
-            return await _context.SalesRecord.FirstOrDefaultAsync(x => x.Id == id);
-        }
-
-        public async Task Update(SalesRecord entity)
-        {
-            _context.Entry(entity).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
         }
     }
 }
