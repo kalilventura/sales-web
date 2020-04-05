@@ -25,7 +25,7 @@ namespace SalesWeb.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddSeller(SellerDTO seller)
+        public async Task<IActionResult> AddSeller(SellerDto seller)
         {
             return Ok();
         }

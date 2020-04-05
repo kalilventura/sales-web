@@ -37,7 +37,7 @@ namespace SalesWeb
             services
                 .AddControllers(x =>
                 {
-                    x.Filters.Add(typeof(ValidatorActionFilter));
+                    x.Filters.Add(typeof(ValidatorActionFilterAttribute));
                 })
                 .AddFluentValidation(fvc => fvc.RegisterValidatorsFromAssemblyContaining<Startup>());
 

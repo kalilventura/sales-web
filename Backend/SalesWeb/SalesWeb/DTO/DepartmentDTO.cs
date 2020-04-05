@@ -1,6 +1,6 @@
 ﻿namespace SalesWeb.DTO
 {
-    public class DepartmentDTO
+    public class DepartmentDto
     {
         public string Name { get; set; }
     }

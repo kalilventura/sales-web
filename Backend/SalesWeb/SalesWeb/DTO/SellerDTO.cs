@@ -2,7 +2,7 @@
 
 namespace SalesWeb.DTO
 {
-    public class SellerDTO
+    public class SellerDto
     {
         public string Name { get; set; }
         public string Email { get; set; }

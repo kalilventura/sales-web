@@ -33,7 +33,7 @@ namespace SalesWeb.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddDepartment(DepartmentDTO department)
+        public async Task<IActionResult> AddDepartment(DepartmentDto department)
         {
             var newDepartment = new Department(department.Name);
             var result = await departmentHandler.Add(newDepartment);

@@ -3,9 +3,9 @@ using System;
 
 namespace SalesWeb.DTO.Validators
 {
-    public class SellerDTOValidator : AbstractValidator<SellerDTO>
+    public class SellerDtoValidator : AbstractValidator<SellerDto>
     {
-        public SellerDTOValidator()
+        public SellerDtoValidator()
         {
             #region [ NAME ]
             RuleFor(x => x.Name).NotEmpty().WithMessage("Name is empty");
