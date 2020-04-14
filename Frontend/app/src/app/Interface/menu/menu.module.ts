@@ -8,6 +8,9 @@ import { NgModule } from '@angular/core';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    MenuComponent
   ]
 })
 export class MenuModule { }
