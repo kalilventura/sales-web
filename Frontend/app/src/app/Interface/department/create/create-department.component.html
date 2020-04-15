@@ -1,1 +1,13 @@
-<p>create-department works</p>
+<div>
+  <form [formGroup]="createDepartmentForm" (submit)="saveDepartment()">
+    <div class="input-group">
+      <label>Name</label>
+      <input />
+    </div>
+    <div>
+      <button [disabled]="!createDepartmentForm.valid">
+        Save
+      </button>
+    </div>
+  </form>
+</div>
