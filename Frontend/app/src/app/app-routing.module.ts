@@ -1,6 +1,6 @@
-import { CreateDepartmentComponent } from './Interface/department/create/create-department.component';
-import { ListDepartmentComponent } from './Interface/department/list/list-department.component';
-import { HomeComponent } from './Interface/home/home.component';
+import { CreateDepartmentComponent } from './components/department/create/create-department.component';
+import { ListDepartmentComponent } from './components/department/list/list-department.component';
+import { HomeComponent } from './components/home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 

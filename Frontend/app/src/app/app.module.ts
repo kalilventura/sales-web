@@ -1,15 +1,17 @@
-import { DepartmentModule } from './Interface/department/department.module';
-import { HomeModule } from './Interface/home/home.module';
+import { DepartmentModule } from './components/department/department.module';
+import { HomeModule } from './components/home/home.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MenuModule } from './Interface/menu/menu.module';
+import { MenuModule } from './components/menu/menu.module';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
