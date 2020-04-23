@@ -60,6 +60,8 @@ namespace SalesWeb
             app.UseRouting();
             app.UseAuthorization();
 
+            app.UseMiddleware<RequestResponseLoggingMiddleware>();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
