@@ -8,7 +8,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'department', component: ListDepartmentComponent },
-  { path: 'department/create', component: CreateDepartmentComponent }
+  { path: 'department/create', component: CreateDepartmentComponent },
 ];
 
 @NgModule({
