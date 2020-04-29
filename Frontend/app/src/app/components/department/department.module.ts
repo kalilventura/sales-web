@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CreateDepartmentModule } from './create/create-department.module';
-import { ListDepartmentModule } from './list/list-department.module';
+import { CreateDepartmentModule } from './create-department/create-department.module';
+import { ListDepartmentModule } from './list-department/list-department.module';
 
 @NgModule({
   imports: [

@@ -1,3 +1,4 @@
+import { SellerModule } from './components/sellers/seller.module';
 import { DepartmentModule } from './components/department/department.module';
 import { HomeModule } from './components/home/home.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -8,12 +9,14 @@ import { AppComponent } from './app.component';
 import { MenuModule } from './components/template/menu/menu.module';
 import { FooterComponent } from './components/template/footer/footer.component';
 import { NavComponent } from './components/template/nav/nav.component';
+import { CreateSellerComponent } from './components/sellers/create-seller/create-seller.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     NavComponent,
+    CreateSellerComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,6 +24,7 @@ import { NavComponent } from './components/template/nav/nav.component';
     HomeModule,
     DepartmentModule,
     MenuModule,
+    SellerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
