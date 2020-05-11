@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SalesWeb.Domain.Entities;
+using SalesWeb.Domain.Entities.Pagination;
 using SalesWeb.Domain.Repositories;
+using SalesWeb.Infra.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -34,6 +36,11 @@ namespace SalesWeb.Infra.Repositories
         public async Task<IEnumerable<T>> FindAll()
         {
             return await _dataset.ToListAsync();
+        }
+
+        public async Task<PagedResult<T>> FindAll(BasePagedResult pagination)
+        {
+            return _dataset.GetPaged<T>(pagination.CurrentPage, pagination.PageSize);            
         }
 
         public async Task<T> FindById(Guid id)
