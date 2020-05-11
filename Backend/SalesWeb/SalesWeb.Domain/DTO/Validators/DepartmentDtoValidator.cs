@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace SalesWeb.DTO.Validators
+namespace SalesWeb.Domain.DTO.Validators
 {
     public class DepartmentDtoValidator : AbstractValidator<DepartmentDto>
     {

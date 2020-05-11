@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SalesWeb.DTO
+namespace SalesWeb.Domain.DTO
 {
     public class SellerDto
     {
@@ -8,6 +8,6 @@ namespace SalesWeb.DTO
         public string Email { get; set; }
         public DateTime BirthDate { get; set; }
         public decimal BaseSalary { get; set; }
-        public int DepartmentId { get; set; }
+        public Guid DepartmentId { get; set; }
     }
 }

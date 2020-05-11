@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-seller',
@@ -6,10 +7,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-seller.component.css']
 })
 export class CreateSellerComponent implements OnInit {
-
-  constructor() { }
+  createSellerForm: FormGroup;
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.createForm();
+  }
+
+  createForm() {
+    this.createSellerForm = this.fb.group({
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      birthDate: ['', [Validators.required]],
+      baseSalary: ['', [Validators.required]],
+    });
+  }
+
+  createSeller() {
+    console.log(this.createSellerForm.value);
   }
 
 }

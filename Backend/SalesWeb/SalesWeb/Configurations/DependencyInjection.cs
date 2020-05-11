@@ -11,6 +11,7 @@ namespace SalesWeb.Configurations
         private static void AddRepositories(this IServiceCollection services)
         {
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            services.AddScoped<ISellerRepository, SellerRepository>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
         }
 

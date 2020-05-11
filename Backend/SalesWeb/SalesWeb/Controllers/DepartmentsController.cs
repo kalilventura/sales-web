@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using SalesWeb.Domain.Entities;
+using SalesWeb.Domain.DTO;
 using SalesWeb.Domain.Handlers.Interfaces;
-using SalesWeb.DTO;
 
 namespace SalesWeb.Controllers
 {
@@ -21,37 +20,31 @@ namespace SalesWeb.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllDepartments()
         {
-            var departments = await departmentHandler.FindAll();
-            return Ok(departments);
+            return Ok(await departmentHandler.FindAll());
         }
 
         [HttpGet("{departmentId}")]
         public async Task<IActionResult> GetDepartmentById(Guid departmentId)
         {
-            var departments = await departmentHandler.FindById(departmentId);
-            return Ok(departments);
+            return Ok(await departmentHandler.FindById(departmentId));
         }
 
         [HttpPost]
         public async Task<IActionResult> AddDepartment(DepartmentDto department)
         {
-            var newDepartment = new Department(department.Name);
-            var result = await departmentHandler.Add(newDepartment);
-            return Ok(result);
+            return Ok(await departmentHandler.Add(department));
         }
 
         [HttpPut("{departmentId}")]
         public async Task<IActionResult> AlterDepartment(Guid departmentId)
         {
-            var result = await departmentHandler.Update(departmentId);
-            return Ok(result);
+            return Ok(await departmentHandler.Update(departmentId));
         }
 
         [HttpDelete("{departmentId}")]
         public async Task<IActionResult> DeleteDepartment(Guid departmentId)
         {
-            var result = await departmentHandler.Delete(departmentId);
-            return Ok(result);
+            return Ok(await departmentHandler.Delete(departmentId));
         }
     }
 }

@@ -1,1 +1,23 @@
-<p>create-seller works!</p>
+<div>
+  <form [formGroup]="createSellerForm" (submit)="createSeller()">
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" class="form-control" formControlName="name" placeholder="Name" />
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="text" class="form-control" formControlName="email" placeholder="Email" />
+    </div>
+    <div class="form-group">
+      <label>Birth Date</label>
+      <input type="date" class="form-control" formControlName="birthDate" />
+    </div>
+    <div class="form-group">
+      <label>Base Salary</label>
+      <input type="text" class="form-control" formControlName="baseSalary" placeholder="Base salary" />
+    </div>
+    <button class="btn btn-primary" [disabled]="!createSellerForm.valid">
+      Save
+    </button>
+  </form>
+</div>

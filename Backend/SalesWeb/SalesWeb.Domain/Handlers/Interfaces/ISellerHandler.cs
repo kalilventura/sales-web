@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 
 namespace SalesWeb.Domain.Handlers.Interfaces
 {
-    public interface IDepartmentHandler : IGenericHandler<Department>
+    public interface ISellerHandler : IGenericHandler<Seller>
     {
-        Task<IGenericResult> Add(DepartmentDto entity);
+        Task<IGenericResult> Add(SellerDto entity);
     }
 }

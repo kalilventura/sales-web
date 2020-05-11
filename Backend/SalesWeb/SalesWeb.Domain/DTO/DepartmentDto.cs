@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SalesWeb.DTO
+namespace SalesWeb.Domain.DTO
 {
     public class DepartmentDto
     {

@@ -1,13 +1,11 @@
-<div>
+<div class="form">
   <form [formGroup]="createDepartmentForm" (submit)="saveDepartment()">
-    <div class="input-group">
+    <div class="form-group">
       <label>Name</label>
-      <input />
+      <input class="form-control" formControlName="name" placeholder="Name of department" />
     </div>
-    <div>
-      <button [disabled]="!createDepartmentForm.valid">
-        Save
-      </button>
-    </div>
+    <button class="btn btn-primary" [disabled]="!createDepartmentForm.valid">
+      Save
+    </button>
   </form>
 </div>

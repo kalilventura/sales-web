@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using System;
 
-namespace SalesWeb.DTO.Validators
+namespace SalesWeb.Domain.DTO.Validators
 {
     public class SellerDtoValidator : AbstractValidator<SellerDto>
     {
@@ -34,7 +34,7 @@ namespace SalesWeb.DTO.Validators
             #region [ DEPARTMENT ID ]
             RuleFor(x => x.DepartmentId).NotEmpty().WithMessage("Department is empty");
             RuleFor(x => x.DepartmentId).NotNull().WithMessage("Department is null");
-            RuleFor(x => x.DepartmentId).LessThanOrEqualTo(0).WithMessage("Department invalid");
+            //RuleFor(x => x.DepartmentId).LessThanOrEqualTo(0).WithMessage("Department invalid");
             #endregion
         }
     }

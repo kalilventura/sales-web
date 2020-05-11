@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace SalesWeb.Domain.Handlers.Interfaces
@@ -8,7 +7,7 @@ namespace SalesWeb.Domain.Handlers.Interfaces
     {
         Task<IGenericResult> FindAll();
         Task<IGenericResult> FindById(Guid id);
-        Task<IGenericResult> Add(T entity);
+        //Task<IGenericResult> Add(T entity);
         Task<IGenericResult> Update(Guid id);
         Task<IGenericResult> Delete(Guid id);
     }
