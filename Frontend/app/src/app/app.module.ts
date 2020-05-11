@@ -9,7 +9,6 @@ import { AppComponent } from './app.component';
 import { MenuModule } from './template/menu/menu.module';
 import { FooterComponent } from './template/footer/footer.component';
 import { NavComponent } from './template/nav/nav.component';
-import { CreateSellerComponent } from './components/sellers/create-seller/create-seller.component';
 
 import { HttpClientModule } from '@angular/common/http';
 @NgModule({
@@ -17,7 +16,6 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     FooterComponent,
     NavComponent,
-    CreateSellerComponent,
   ],
   imports: [
     BrowserModule,

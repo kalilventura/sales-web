@@ -13,4 +13,4 @@ import { NgModule } from '@angular/core';
     ReactiveFormsModule
   ]
 })
-export class CreateDepartmentModule { }
+export class CreateSellerModule { }

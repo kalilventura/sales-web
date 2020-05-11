@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CreateDepartmentModule } from '../department/create-department/create-department.module';
 import { ListSellerModule } from './list-seller/list-seller.module';
+import { CreateSellerModule } from './create-seller/create-seller.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    CreateDepartmentModule,
-    ListSellerModule
+    ListSellerModule,
+    CreateSellerModule
   ],
 })
 export class SellerModule { }

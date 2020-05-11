@@ -2,6 +2,11 @@ a {
   cursor: pointer;
 }
 
+a:hover {
+  text-decoration: none;
+  font-weight: 500;
+}
+
 .active {
   font-weight: bold;
 }
