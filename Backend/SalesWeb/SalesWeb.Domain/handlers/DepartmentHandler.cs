@@ -1,3 +1,4 @@
+using SalesWeb.Domain.DTO;
 using SalesWeb.Domain.Entities;
 using SalesWeb.Domain.Handlers.Interfaces;
 using SalesWeb.Domain.Repositories;
@@ -16,10 +17,13 @@ namespace SalesWeb.Domain.Handlers
             _departmentRepository = departmentRepository;
         }
 
-        public async Task<IGenericResult> Add(Department entity)
+        public async Task<IGenericResult> Add(DepartmentDto entity)
         {
-            var newDepartment = await _departmentRepository.Add(entity);
-            return new GenericResult(true, "Departamento inserido com sucesso.", newDepartment);
+            var newDepartment = new Department 
+            {
+                Name = entity.Name,
+            };
+            return new GenericResult(true, "Departamento inserido com sucesso.", await _departmentRepository.Add(newDepartment));
         }
 
         public async Task<IGenericResult> Delete(Guid id)

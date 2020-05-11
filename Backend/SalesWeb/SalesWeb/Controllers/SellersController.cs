@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SalesWeb.Domain.DTO;
-using SalesWeb.Domain.Entities;
 using SalesWeb.Domain.Handlers.Interfaces;
 
 namespace SalesWeb.Controllers
