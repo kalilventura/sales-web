@@ -38,9 +38,14 @@ namespace SalesWeb.Infra.Repositories
             return await _dataset.ToListAsync();
         }
 
-        public async Task<PagedResult<T>> FindAll(BasePagedResult pagination)
+        //public async Task<PagedResult<T>> FindAll(BasePagedResult pagination)
+        //{
+        //    return _dataset.GetPaged<T>(pagination.CurrentPage, pagination.PageSize);            
+        //}
+
+        public async Task<PagedResult<T>> FindAll(int CurrentPage, int PageSize)
         {
-            return _dataset.GetPaged<T>(pagination.CurrentPage, pagination.PageSize);            
+            return _dataset.GetPaged<T>(CurrentPage, PageSize);
         }
 
         public async Task<T> FindById(Guid id)

@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SalesWeb", "SalesWeb\SalesW
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SalesWeb.Domain", "SalesWeb.Domain\SalesWeb.Domain.csproj", "{FC62DA85-B03D-4382-B29E-5F3CF259A9B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesWeb.Infra", "SalesWeb.Infra\SalesWeb.Infra.csproj", "{5FF157AF-7F26-4165-8C38-68A9576EC45B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SalesWeb.Infra", "SalesWeb.Infra\SalesWeb.Infra.csproj", "{5FF157AF-7F26-4165-8C38-68A9576EC45B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesWeb.Tests", "SalesWeb.Tests\SalesWeb.Tests.csproj", "{6BE9B68D-6FA3-4DA9-B144-2C1BB6C3BF5C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{5FF157AF-7F26-4165-8C38-68A9576EC45B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FF157AF-7F26-4165-8C38-68A9576EC45B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FF157AF-7F26-4165-8C38-68A9576EC45B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BE9B68D-6FA3-4DA9-B144-2C1BB6C3BF5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BE9B68D-6FA3-4DA9-B144-2C1BB6C3BF5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BE9B68D-6FA3-4DA9-B144-2C1BB6C3BF5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BE9B68D-6FA3-4DA9-B144-2C1BB6C3BF5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

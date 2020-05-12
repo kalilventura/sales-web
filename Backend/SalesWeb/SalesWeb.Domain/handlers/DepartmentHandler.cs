@@ -49,12 +49,15 @@ namespace SalesWeb.Domain.Handlers
 
         public async Task<IGenericResult> FindAll(int currentPage, int pageSize)
         {
-            var pagination = new PagedResult<Department>
-            {
-                CurrentPage = currentPage,
-                PageSize = pageSize
-            };
-            var result = await _departmentRepository.FindAll(pagination);
+            //var pagination = new PagedResult<Department>
+            //{
+            //    CurrentPage = currentPage,
+            //    PageSize = pageSize
+            //};
+
+            //var pagination = new PagedResult<Department>(currentPage, pageSize);
+
+            var result = await _departmentRepository.FindAll(currentPage, pageSize);
 
             if (!result.Results.Any())
                 return new GenericResult(true, "Não existem departamentos cadastrados no sistema.");
