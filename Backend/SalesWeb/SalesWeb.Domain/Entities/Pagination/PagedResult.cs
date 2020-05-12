@@ -9,7 +9,6 @@ namespace SalesWeb.Domain.Entities.Pagination
         public PagedResult(int currentPage, int pageSize, ICollection<T> results)
             : base(currentPage, pageSize)
         {
-            //Results = new List<T>();
             Results = results;
             RowCount = Results.Count;
         }

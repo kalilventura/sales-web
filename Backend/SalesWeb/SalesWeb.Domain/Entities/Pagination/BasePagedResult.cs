@@ -4,15 +4,13 @@ namespace SalesWeb.Domain.Entities.Pagination
 {
     public abstract class BasePagedResult
     {
-        protected BasePagedResult(int currentPage, int pageSize)//, int rowCount)
+        protected BasePagedResult(int currentPage, int pageSize)
         {
             CurrentPage = currentPage;
             PageSize = pageSize;
-            //RowCount = rowCount;
         }
 
         public int CurrentPage { get; set; }
-        //public int PageCount { get; set; }
         public int PageSize { get; set; }
         public int RowCount { get; set; }
 
