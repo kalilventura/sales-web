@@ -17,12 +17,6 @@ namespace SalesWeb.Controllers
             this.sellerHandler = sellerHandler;
         }
 
-        //[HttpGet]
-        //public async Task<IActionResult> GetAllSellers()
-        //{
-        //    return Ok(await sellerHandler.FindAll());
-        //}
-
         [HttpGet]
         public async Task<IActionResult> GetAllSellers(int currentPage, int pageSize)
         {
