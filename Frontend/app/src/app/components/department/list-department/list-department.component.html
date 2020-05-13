@@ -14,8 +14,8 @@
       <td>{{department.id}}</td>
       <td>{{department.name}}</td>
       <td>
-        <button (click)="editDepartment(department)">Edit</button>
-        <button (click)="deleteDepartment(department)">Delete</button>
+        <fa-icon (click)="editDepartment(department)" [icon]="editIcon"></fa-icon>
+        <fa-icon (click)="deleteDepartment(department)" [icon]="trashIcon"></fa-icon>
       </td>
     </tr>
   </tbody>

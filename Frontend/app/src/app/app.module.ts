@@ -11,6 +11,7 @@ import { FooterComponent } from './template/footer/footer.component';
 import { NavComponent } from './template/nav/nav.component';
 
 import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,

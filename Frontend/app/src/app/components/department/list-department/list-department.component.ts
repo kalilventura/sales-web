@@ -2,7 +2,7 @@ import { Department } from './../../../core/models/department';
 import { DepartmentService } from './../../../core/services/department/department.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-list-department',
@@ -12,6 +12,8 @@ import { Observable } from 'rxjs';
 export class ListDepartmentComponent implements OnInit {
 
   departments: Department[];
+  trashIcon = faTrash;
+  editIcon = faEdit;
   constructor(private router: Router, private service: DepartmentService) { }
 
   ngOnInit(): void {
