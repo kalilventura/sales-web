@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace SalesWeb.Domain.Entities
 {
@@ -13,7 +12,6 @@ namespace SalesWeb.Domain.Entities
         public int DepartmentId { get; set; }
         public Department Department { get; set; }
         public ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
-        //private ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
 
         public Seller()
         {
@@ -29,20 +27,5 @@ namespace SalesWeb.Domain.Entities
             BaseSalary = baseSalary;
             Department = department;
         }
-
-        //public void AddSales(SalesRecord salesRecord)
-        //{
-        //    Sales.Add(salesRecord);
-        //}
-
-        //public void RemoveSales(SalesRecord salesRecord)
-        //{
-        //    Sales.Remove(salesRecord);
-        //}
-
-        //public double TotalSales(DateTime initial, DateTime final)
-        //{
-        //    return Sales.Where(sr => sr.Date >= initial && sr.Date <= final).Sum(sr => sr.Amount);
-        //}
     }
 }

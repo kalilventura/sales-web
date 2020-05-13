@@ -22,7 +22,6 @@ namespace SalesWeb
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<SalesContext>(optionsBuilder =>
@@ -47,9 +46,20 @@ namespace SalesWeb
             });
 
             services.AddServices();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllHeaders",
+                    builder =>
+                    {
+                        builder
+                            .AllowAnyOrigin()
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+                    });
+            });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -57,10 +67,13 @@ namespace SalesWeb
 
             app.UseExceptionHandlerMiddleware();
             app.UseHttpsRedirection();
+
             app.UseRouting();
+            app.UseCors("AllowAllHeaders");
+
             app.UseAuthorization();
 
-            app.UseMiddleware<RequestResponseLoggingMiddleware>();
+            // app.UseMiddleware<RequestResponseLoggingMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {

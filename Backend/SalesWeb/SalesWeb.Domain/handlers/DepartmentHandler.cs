@@ -1,6 +1,5 @@
 using SalesWeb.Domain.DTO;
 using SalesWeb.Domain.Entities;
-using SalesWeb.Domain.Entities.Pagination;
 using SalesWeb.Domain.Handlers.Interfaces;
 using SalesWeb.Domain.Repositories;
 using System;
@@ -49,20 +48,12 @@ namespace SalesWeb.Domain.Handlers
 
         public async Task<IGenericResult> FindAll(int currentPage, int pageSize)
         {
-            //var pagination = new PagedResult<Department>
-            //{
-            //    CurrentPage = currentPage,
-            //    PageSize = pageSize
-            //};
+            var pagination = await _departmentRepository.FindAll(currentPage, pageSize);
 
-            //var pagination = new PagedResult<Department>(currentPage, pageSize);
-
-            var result = await _departmentRepository.FindAll(currentPage, pageSize);
-
-            if (!result.Results.Any())
+            if (!pagination.Results.Any())
                 return new GenericResult(true, "Não existem departamentos cadastrados no sistema.");
 
-            return new GenericResult(true, result);
+            return new GenericResult(true, pagination);
         }
 
         public async Task<IGenericResult> FindById(Guid id)

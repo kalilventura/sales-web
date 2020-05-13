@@ -23,7 +23,7 @@ namespace SalesWeb.Domain.Handlers
 
         public async Task<IGenericResult> Add(SellerDto entity)
         {
-            var department = await _departmentRepository.FindById(entity.DepartmentId);
+            var department = await _departmentRepository.FindById(entity.DepartmentId.Value);
             if(department == null)
                 return new GenericResult(false, "Departamento não existe.", null);
 
@@ -60,20 +60,12 @@ namespace SalesWeb.Domain.Handlers
 
         public async Task<IGenericResult> FindAll(int currentPage, int pageSize)
         {
-            //var pagination = new PagedResult<Seller>
-            //{
-            //    CurrentPage = currentPage,
-            //    PageSize = pageSize
-            //};
+            var pagination = await _sellerRepository.FindAll(currentPage, pageSize);
 
-            //var pagination = new PagedResult<Seller>(currentPage, pageSize);
-
-            var result = await _sellerRepository.FindAll(currentPage, pageSize);
-
-            if (!result.Results.Any())
+            if (!pagination.Results.Any())
                 return new GenericResult(true, "Não existem departamentos cadastrados no sistema.");
 
-            return new GenericResult(true, result);
+            return new GenericResult(true, pagination);
         }
 
         public async Task<IGenericResult> FindById(Guid id)
