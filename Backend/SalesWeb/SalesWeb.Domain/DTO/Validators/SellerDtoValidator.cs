@@ -28,7 +28,9 @@ namespace SalesWeb.Domain.DTO.Validators
             #region [ BASE SALARY ]
             RuleFor(x => x.BaseSalary).NotNull().WithMessage("Salary is null");
             RuleFor(x => x.BaseSalary).NotEmpty().WithMessage("Salary is empty");
-            RuleFor(x => x.BaseSalary).LessThanOrEqualTo(decimal.Zero).WithMessage("Salary is invalid");
+            RuleFor(x => x.BaseSalary).LessThanOrEqualTo(double.MinValue).WithMessage("Salary is invalid");
+            RuleFor(x => x.BaseSalary).LessThanOrEqualTo(double.MaxValue).WithMessage("Salary is invalid");
+            RuleFor(x => x.BaseSalary).LessThanOrEqualTo(double.NaN).WithMessage("Salary is invalid");
             #endregion
 
             #region [ DEPARTMENT ID ]

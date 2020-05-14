@@ -37,6 +37,13 @@ namespace SalesWeb
                 .AddControllers(x =>
                 {
                     x.Filters.Add(typeof(ValidatorActionFilterAttribute));
+                }).AddNewtonsoftJson(option =>
+                {
+                    option.AllowInputFormatterExceptionMessages = true;
+                })
+                .AddJsonOptions(x =>
+                {
+                    x.JsonSerializerOptions.IgnoreNullValues = true;
                 })
                 .AddFluentValidation(fvc => fvc.RegisterValidatorsFromAssemblyContaining<Startup>());
 

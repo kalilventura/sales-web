@@ -29,7 +29,7 @@ export class CreateSellerComponent implements OnInit {
       email: ['', [Validators.required]],
       birthDate: ['', [Validators.required]],
       baseSalary: ['', [Validators.required]],
-      department: ['']
+      departmentId: ['']
     });
   }
 

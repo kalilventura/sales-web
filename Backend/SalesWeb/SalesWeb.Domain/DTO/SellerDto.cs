@@ -7,7 +7,7 @@ namespace SalesWeb.Domain.DTO
         public string Name { get; set; }
         public string Email { get; set; }
         public DateTime BirthDate { get; set; }
-        public decimal BaseSalary { get; set; }
+        public double BaseSalary { get; set; }
         public string DepartmentId { get; set; }
     }
 }

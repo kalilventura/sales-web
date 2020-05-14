@@ -8,7 +8,7 @@ namespace SalesWeb.Domain.Entities
         public string Name { get; set; }
         public string Email { get; set; }
         public DateTime BirthDate { get; set; }
-        public decimal BaseSalary { get; set; }
+        public double BaseSalary { get; set; }
         public int DepartmentId { get; set; }
         public Department Department { get; set; }
         public ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
@@ -18,7 +18,7 @@ namespace SalesWeb.Domain.Entities
             Department = new Department();
         }
 
-        public Seller(string name, string email, DateTime birthDate, decimal baseSalary, Department department)
+        public Seller(string name, string email, DateTime birthDate, double baseSalary, Department department)
         {
             Department = new Department();
             Name = name;

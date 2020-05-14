@@ -1,6 +1,5 @@
 ﻿using SalesWeb.Domain.DTO;
 using SalesWeb.Domain.Entities;
-using SalesWeb.Domain.Entities.Pagination;
 using SalesWeb.Domain.Handlers.Interfaces;
 using SalesWeb.Domain.Repositories;
 using System;
