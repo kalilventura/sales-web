@@ -3,18 +3,24 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
 import { Observable } from 'rxjs';
+import { GenericResult } from '../../models/generic-result';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SellersService {
 
+  private urlApi = 'https://localhost:5001/api/Sellers';
   constructor(private http: HttpClient) { }
 
   private apiSeller = `${environment.apiBaseUrl}/api/Sellers`;
 
-  getAllSellers(): Observable<Seller[]> {
-    return this.http.get<Seller[]>(this.apiSeller);
+  // getAllSellers(): Observable<Seller[]> {
+  //   return this.http.get<Seller[]>(this.apiSeller);
+  // }
+
+  getAllSellers(currentPage: number, pageSize: number): Observable<GenericResult> {
+    return this.http.get<GenericResult>(`${this.urlApi}?currentPage=${currentPage}&pageSize=${pageSize}`);
   }
 
   getSellerById(id: string): Observable<Seller> {

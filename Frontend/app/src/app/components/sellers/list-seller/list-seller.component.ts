@@ -1,3 +1,5 @@
+import { SellersService } from './../../../core/services/sellers/sellers.service';
+import { Seller } from './../../../core/models/seller';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListSellerComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  sellers: Seller[];
+  constructor(private router: Router, private service: SellersService) { }
 
   ngOnInit(): void {
+    this.listSellers(1, 5);
+  }
+
+  listSellers(currenPage: number, pageSize: number) {
+    this.service.getAllSellers(currenPage, pageSize).subscribe(response => {
+      this.sellers = response.data.results;
+    })
   }
 
   createSeller() {
