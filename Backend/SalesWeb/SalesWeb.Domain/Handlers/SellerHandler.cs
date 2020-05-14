@@ -23,7 +23,7 @@ namespace SalesWeb.Domain.Handlers
 
         public async Task<IGenericResult> Add(SellerDto entity)
         {
-            var department = await _departmentRepository.FindById(entity.DepartmentId.Value);
+            var department = await _departmentRepository.FindById(new Guid(entity.DepartmentId));
             if(department == null)
                 return new GenericResult(false, "Departamento não existe.", null);
 

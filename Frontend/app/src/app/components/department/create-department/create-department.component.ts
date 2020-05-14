@@ -23,7 +23,6 @@ export class CreateDepartmentComponent implements OnInit {
   }
 
   saveDepartment() {
-    console.log(this.createDepartmentForm.value);
     this.service
       .createDepartment(this.createDepartmentForm.value)
       .subscribe(result => {

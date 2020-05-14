@@ -4,5 +4,5 @@ export interface Seller {
   email: string;
   birthDate: Date;
   baseSalary: number;
-  departmentId: number;
+  departmentId: string;
 }

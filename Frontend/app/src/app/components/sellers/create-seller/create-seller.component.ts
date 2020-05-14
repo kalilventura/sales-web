@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Department } from 'src/app/core/models/department';
 import { DepartmentService } from 'src/app/core/services/department/department.service';
 import { of } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-seller',
@@ -14,7 +15,8 @@ export class CreateSellerComponent implements OnInit {
 
   createSellerForm: FormGroup;
   departments: Department[] = [];
-  constructor(private fb: FormBuilder, private departmentService: DepartmentService, private service: SellersService) { }
+  constructor(private router: Router, private fb: FormBuilder,
+    private departmentService: DepartmentService, private service: SellersService) { }
 
   ngOnInit(): void {
     this.createForm();
@@ -27,12 +29,15 @@ export class CreateSellerComponent implements OnInit {
       email: ['', [Validators.required]],
       birthDate: ['', [Validators.required]],
       baseSalary: ['', [Validators.required]],
-      departments: ['']
+      department: ['']
     });
   }
 
   createSeller() {
-    console.log(this.createSellerForm.value);
+    this.service.createSeller(this.createSellerForm.value)
+      .subscribe(result => {
+        this.router.navigate(['/seller'])
+      });
   }
 
   listAllDepartments() {

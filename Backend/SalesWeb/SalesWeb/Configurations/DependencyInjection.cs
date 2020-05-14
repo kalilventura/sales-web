@@ -18,6 +18,7 @@ namespace SalesWeb.Configurations
         private static void AddHandlers(this IServiceCollection services)
         {
             services.AddTransient<IDepartmentHandler, DepartmentHandler>();
+            services.AddTransient<ISellerHandler, SellerHandler>();
         }
 
         public static IServiceCollection AddServices(this IServiceCollection services)

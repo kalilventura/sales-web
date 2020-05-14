@@ -8,6 +8,6 @@ namespace SalesWeb.Domain.DTO
         public string Email { get; set; }
         public DateTime BirthDate { get; set; }
         public decimal BaseSalary { get; set; }
-        public Guid? DepartmentId { get; set; }
+        public string DepartmentId { get; set; }
     }
 }

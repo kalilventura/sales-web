@@ -15,15 +15,16 @@ export class SellersService {
 
   private apiSeller = `${environment.apiBaseUrl}/api/Sellers`;
 
-  // getAllSellers(): Observable<Seller[]> {
-  //   return this.http.get<Seller[]>(this.apiSeller);
-  // }
-
   getAllSellers(currentPage: number, pageSize: number): Observable<GenericResult> {
     return this.http.get<GenericResult>(`${this.urlApi}?currentPage=${currentPage}&pageSize=${pageSize}`);
   }
 
   getSellerById(id: string): Observable<Seller> {
     return this.http.get<Seller>(this.apiSeller);
+  }
+
+  createSeller(seller: Seller): Observable<Seller> {
+    seller.baseSalary = +seller.baseSalary;
+    return this.http.post<Seller>(this.urlApi, seller);
   }
 }
