@@ -20,6 +20,10 @@ export class DepartmentService {
     return this.http.get<GenericResult>(`${this.urlApi}?currentPage=${currentPage}&pageSize=${pageSize}`);
   }
 
+  allDepartments(): Observable<GenericResult> {
+    return this.http.get<GenericResult>(`${this.urlApi}/AllDepartments`);
+  }
+
   getDepartmentById(id: string): Observable<GenericResult> {
     let params = new HttpParams();
     params = params.append('id', id);

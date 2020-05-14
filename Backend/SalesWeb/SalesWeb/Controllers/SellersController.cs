@@ -6,8 +6,8 @@ using SalesWeb.Domain.Handlers.Interfaces;
 
 namespace SalesWeb.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class SellersController : ControllerBase
     {
         private readonly ISellerHandler sellerHandler;
@@ -15,6 +15,12 @@ namespace SalesWeb.Controllers
         public SellersController(ISellerHandler sellerHandler)
         {
             this.sellerHandler = sellerHandler;
+        }
+
+        [HttpGet("AllSellers")]
+        public async Task<IActionResult> AllSellers()
+        {
+            return Ok(await sellerHandler.FindAll());
         }
 
         [HttpGet]

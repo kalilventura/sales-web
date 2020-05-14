@@ -17,6 +17,12 @@ namespace SalesWeb.Controllers
             this.departmentHandler = departmentHandler;
         }
 
+        [HttpGet("AllDepartments")]
+        public async Task<IActionResult> AllDepartments()
+        {
+            return Ok(await departmentHandler.FindAll());
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetAllDepartments(int currentPage, int pageSize)
         {

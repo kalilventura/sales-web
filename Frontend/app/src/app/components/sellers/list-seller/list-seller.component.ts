@@ -1,3 +1,5 @@
+import { Department } from './../../../core/models/department';
+import { DepartmentService } from './../../../core/services/department/department.service';
 import { SellersService } from './../../../core/services/sellers/sellers.service';
 import { Seller } from './../../../core/models/seller';
 import { Router } from '@angular/router';
@@ -20,7 +22,7 @@ export class ListSellerComponent implements OnInit {
   listSellers(currenPage: number, pageSize: number) {
     this.service.getAllSellers(currenPage, pageSize).subscribe(response => {
       this.sellers = response.data.results;
-    })
+    });
   }
 
   createSeller() {
