@@ -15,6 +15,7 @@ export class ListDepartmentComponent implements OnInit {
   trashIcon = faTrash;
   editIcon = faEdit;
   infoIcon = faBars;
+
   constructor(private router: Router, private service: DepartmentService) { }
 
   ngOnInit(): void {

@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SalesWeb.Configurations;
 using SalesWeb.Filters;
+using SalesWeb.Infra.Database;
 using SalesWeb.Infra.Repositories;
 using SalesWeb.Middlewares;
 
@@ -24,14 +25,16 @@ namespace SalesWeb
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<SalesContext>(optionsBuilder =>
-            optionsBuilder
-                .UseSqlServer(Configuration["ConnectionStrings:SqlServer"],
-                    options =>
-                    {
-                        options.EnableRetryOnFailure(2);
-                        options.MigrationsAssembly("SalesWeb.Infra");
-                    }));
+            services.AddDbContext<SalesContext>(options => options.UseInMemoryDatabase("SalesWebDatabase"));
+
+            //services.AddDbContext<SalesContext>(optionsBuilder =>
+            //optionsBuilder
+            //    .UseSqlServer(Configuration["ConnectionStrings:SqlServer"],
+            //        options =>
+            //        {
+            //            options.EnableRetryOnFailure(2);
+            //            options.MigrationsAssembly("SalesWeb.Infra");
+            //        }));
 
             services
                 .AddControllers(x =>
@@ -67,10 +70,13 @@ namespace SalesWeb
             });
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, SeedingService seedingService)
         {
             if (env.IsDevelopment())
+            {
                 app.UseDeveloperExceptionPage();
+                seedingService.Seed();
+            }
 
             app.UseExceptionHandlerMiddleware();
             app.UseHttpsRedirection();
@@ -82,10 +88,7 @@ namespace SalesWeb
 
             // app.UseMiddleware<RequestResponseLoggingMiddleware>();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => endpoints.MapControllers());
         }
     }
 }

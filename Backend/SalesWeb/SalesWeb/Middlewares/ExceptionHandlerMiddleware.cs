@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using SalesWeb.Domain.Handlers;
+using SalesWeb.Infra.Database;
 using System;
+using System.Data.Common;
 using System.Threading.Tasks;
 
 namespace SalesWeb.Middlewares
@@ -33,9 +35,14 @@ namespace SalesWeb.Middlewares
             {
                 await _next(httpContext);
             }
+            catch (DbException dbException)
+            {
+                _logger.LogCritical($"Unexpected error: {dbException.Message}");
+                await HandleExceptionAsync(httpContext, dbException);
+            }
             catch (Exception ex)
             {
-                _logger.LogCritical($"Unexpected error: {ex}");
+                _logger.LogError($"Unexpected error: {ex}");
                 await HandleExceptionAsync(httpContext, ex);
             }
         }

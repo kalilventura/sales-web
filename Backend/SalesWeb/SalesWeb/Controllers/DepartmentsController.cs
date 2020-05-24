@@ -30,9 +30,9 @@ namespace SalesWeb.Controllers
         }
 
         [HttpGet("{departmentId}")]
-        public async Task<IActionResult> GetDepartmentById(Guid departmentId)
+        public async Task<IActionResult> GetDepartmentById(string departmentId)
         {
-            return Ok(await departmentHandler.FindById(departmentId));
+            return Ok(await departmentHandler.FindById(new Guid(departmentId)));
         }
 
         [HttpPost]
