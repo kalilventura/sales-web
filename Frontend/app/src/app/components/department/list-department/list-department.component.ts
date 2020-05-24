@@ -2,7 +2,7 @@ import { Department } from './../../../core/models/department';
 import { DepartmentService } from './../../../core/services/department/department.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faEdit, faBars } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-list-department',
@@ -14,10 +14,11 @@ export class ListDepartmentComponent implements OnInit {
   departments: Department[];
   trashIcon = faTrash;
   editIcon = faEdit;
+  infoIcon = faBars;
   constructor(private router: Router, private service: DepartmentService) { }
 
   ngOnInit(): void {
-    this.listDepartments(1, 5);
+    this.listDepartments(1, 5000);
   }
 
   listDepartments(currentPage: number, pageSize: number): any {
@@ -28,13 +29,18 @@ export class ListDepartmentComponent implements OnInit {
   }
 
   editDepartment(department: Department) {
-    console.log('edit');
     console.log(department);
+    this.router.navigate([`/department/edit/${department.id}`]);
   }
 
   deleteDepartment(department: Department) {
-    console.log('delete');
     console.log(department);
+    this.router.navigate([`/department/delete/${department.id}`]);
+  }
+
+  detailDepartment(department: Department) {
+    console.log(department);
+    this.router.navigate([`/department/detail/${department.id}`]);
   }
 
   createDepartment() {
