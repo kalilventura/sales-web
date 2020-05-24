@@ -11,6 +11,8 @@ import { FooterComponent } from './template/footer/footer.component';
 import { NavComponent } from './template/nav/nav.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { NotFoundComponent } from './components/error/not-found/not-found.component';
+import { ErrorModule } from './components/error/error.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
     DepartmentModule,
     MenuModule,
     SellerModule,
-    HttpClientModule
+    HttpClientModule,
+    ErrorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

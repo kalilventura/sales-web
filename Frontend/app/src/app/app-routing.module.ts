@@ -1,3 +1,4 @@
+import { NotFoundComponent } from './components/error/not-found/not-found.component';
 import { EditSellerComponent } from './components/sellers/edit-seller/edit-seller.component';
 import { DetailSellerComponent } from './components/sellers/detail-seller/detail-seller.component';
 import { DeleteSellerComponent } from './components/sellers/delete-seller/delete-seller.component';
@@ -15,6 +16,7 @@ import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: '**', component: NotFoundComponent },
 
   { path: 'department', component: ListDepartmentComponent },
   { path: 'department/create', component: CreateDepartmentComponent },
