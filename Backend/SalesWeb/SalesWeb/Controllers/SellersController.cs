@@ -41,10 +41,10 @@ namespace SalesWeb.Controllers
             return Ok(await sellerHandler.Add(seller));
         }
 
-        [HttpPut("sellerId")]
-        public async Task<IActionResult> AlterSeller(Guid sellerId)
+        [HttpPut]
+        public async Task<IActionResult> AlterSeller(SellerDto seller)
         {
-            return Ok(await sellerHandler.Update(sellerId));
+            return Ok(await sellerHandler.Update(seller));
         }
 
         [HttpDelete("sellerId")]

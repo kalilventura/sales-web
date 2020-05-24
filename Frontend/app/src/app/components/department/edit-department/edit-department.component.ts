@@ -25,4 +25,7 @@ export class EditDepartmentComponent implements OnInit {
     this.route.navigate(['/department']);
   }
 
+  edit() {
+    this.service.editDepartment(this.department).subscribe(result => this.route.navigate(['/department']));
+  }
 }

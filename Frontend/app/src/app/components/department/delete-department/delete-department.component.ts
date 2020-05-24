@@ -13,7 +13,6 @@ export class DeleteDepartmentComponent implements OnInit {
   constructor(private route: Router, private activatedRoute: ActivatedRoute, private service: DepartmentService) { }
 
   ngOnInit(): void {
-    this.department = new Department();
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     this.getDepartment(id);
   }

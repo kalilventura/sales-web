@@ -41,10 +41,10 @@ namespace SalesWeb.Controllers
             return Ok(await departmentHandler.Add(department));
         }
 
-        [HttpPut("{departmentId}")]
-        public async Task<IActionResult> AlterDepartment(Guid departmentId)
+        [HttpPut]
+        public async Task<IActionResult> AlterDepartment(DepartmentDto department)
         {
-            return Ok(await departmentHandler.Update(departmentId));
+            return Ok(await departmentHandler.Update(department));
         }
 
         [HttpDelete("{departmentId}")]

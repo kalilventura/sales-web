@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Department } from './../../models/department';
 import { Injectable } from '@angular/core';
@@ -30,6 +30,10 @@ export class DepartmentService {
 
   deleteDepartment(id: string): Observable<GenericResult> {
     return this.http.delete<GenericResult>(`${this.urlApi}/${id}`);
+  }
+
+  editDepartment(department: Department): Observable<GenericResult> {
+    return this.http.put<GenericResult>(`${this.urlApi}`, department);
   }
 
 }

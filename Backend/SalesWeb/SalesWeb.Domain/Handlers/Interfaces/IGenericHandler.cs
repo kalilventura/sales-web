@@ -9,7 +9,7 @@ namespace SalesWeb.Domain.Handlers.Interfaces
         Task<IGenericResult> FindAll();
         Task<IGenericResult> FindAll(int currentPage, int pageSize);
         Task<IGenericResult> FindById(Guid id);
-        Task<IGenericResult> Update(Guid id);
+        // Task<IGenericResult> Update(Guid id);
         Task<IGenericResult> Delete(Guid id);
     }
 }

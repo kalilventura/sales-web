@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { EditDepartmentComponent } from './edit-department.component';
 import { NgModule } from '@angular/core';
 
@@ -5,7 +6,9 @@ import { NgModule } from '@angular/core';
   declarations: [
     EditDepartmentComponent
   ],
-  imports: [],
+  imports: [
+    FormsModule
+  ],
   exports: []
 })
 export class EditDepartmentModule { }

@@ -9,7 +9,7 @@ namespace SalesWeb.Domain.Entities
             Id = Guid.NewGuid();
         }
 
-        public Guid Id { get; private set; }
+        public Guid Id { get; set; }
 
         public bool Equals(BaseEntity other) => Id == other.Id;
     }

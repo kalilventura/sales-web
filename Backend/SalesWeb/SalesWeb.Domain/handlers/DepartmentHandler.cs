@@ -66,16 +66,17 @@ namespace SalesWeb.Domain.Handlers
             return new GenericResult(true, result);
         }
 
-        public async Task<IGenericResult> Update(Guid id)
+        public async Task<IGenericResult> Update(DepartmentDto departmentDto)
         {
-            var department = await _departmentRepository.FindById(id);
-
-            if (department == null)
-                return new GenericResult(false, "Departamento não existe.");
+            var department = new Department 
+            {
+                Id = new Guid(departmentDto.Id),
+                Name = departmentDto.Name
+            };
 
             await _departmentRepository.Update(department);
 
-            return new GenericResult(true, "Departamento excluido com sucesso.");
+            return new GenericResult(true, "Departamento alterado com sucesso.");
         }
     }
 }

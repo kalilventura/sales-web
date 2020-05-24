@@ -20,18 +20,18 @@ namespace SalesWeb.Domain.Handlers
             _departmentRepository = departmentRepository;
         }
 
-        public async Task<IGenericResult> Add(SellerDto entity)
+        public async Task<IGenericResult> Add(SellerDto sellerDto)
         {
-            var department = await _departmentRepository.FindById(new Guid(entity.DepartmentId));
+            var department = await _departmentRepository.FindById(new Guid(sellerDto.DepartmentId));
             if(department == null)
                 return new GenericResult(false, "Departamento não existe.", null);
 
             var newSeller = new Seller
             {
-                BaseSalary = entity.BaseSalary,
-                BirthDate = entity.BirthDate,
-                Email = entity.Email,
-                Name = entity.Name,
+                BaseSalary = sellerDto.BaseSalary,
+                BirthDate = sellerDto.BirthDate,
+                Email = sellerDto.Email,
+                Name = sellerDto.Name,
                 Department = department
             };
             return new GenericResult(true, "Vendedor inserido com sucesso.", await _sellerRepository.Add(newSeller));
@@ -77,14 +77,24 @@ namespace SalesWeb.Domain.Handlers
             return new GenericResult(true, result);
         }
 
-        public async Task<IGenericResult> Update(Guid id)
+        public async Task<IGenericResult> Update(SellerDto sellerDto)
         {
-            var department = await _sellerRepository.FindById(id);
 
-            if (department == null)
-                return new GenericResult(false, "Vendedor não existe.");
+            var department = await _departmentRepository.FindById(new Guid(sellerDto.DepartmentId));
+            if(department == null)
+                return new GenericResult(true, "Departamento não encontrado.");
 
-            await _sellerRepository.Update(department);
+            var seller = new Seller 
+            {
+                Id = new Guid(sellerDto.Id),
+                Name = sellerDto.Name,
+                BaseSalary = sellerDto.BaseSalary,
+                BirthDate = sellerDto.BirthDate,
+                Email = sellerDto.Email,
+                Department = department,
+            };
+
+            await _sellerRepository.Update(seller);
 
             return new GenericResult(true, "Vendedor excluido com sucesso.");
         }
