@@ -15,6 +15,17 @@
       <td>{{seller.id}}</td>
       <td>{{seller.name}}</td>
       <td>{{seller.email}}</td>
+      <td>
+        <a>
+          <fa-icon (click)="editSeller(seller)" [icon]="editIcon"></fa-icon>
+        </a>
+        <a>
+          <fa-icon (click)="deleteSeller(seller)" [icon]="trashIcon"></fa-icon>
+        </a>
+        <a>
+          <fa-icon (click)="detailSeller(seller)" [icon]="infoIcon"></fa-icon>
+        </a>
+      </td>
     </tr>
   </tbody>
 </table>
