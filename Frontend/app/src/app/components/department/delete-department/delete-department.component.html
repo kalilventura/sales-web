@@ -1,1 +1,11 @@
-<p>delete-department works!</p>
+<h2>Are you sure you want to delete this department ?</h2>
+<div class="form">
+  <div class="form-group">
+    <input class="form-control" type="text" [value]="department.id" disabled>
+    <input class="form-control" type="text" [value]="department.name" disabled>
+  </div>
+  <div>
+    <button class="btn btn-danger" (click)="delete(department.id)">Delete</button>
+    <button class="btn btn-secondary" (click)="return()">Back</button>
+  </div>
+</div>

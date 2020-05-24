@@ -16,7 +16,6 @@ import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: '**', component: NotFoundComponent },
 
   { path: 'department', component: ListDepartmentComponent },
   { path: 'department/create', component: CreateDepartmentComponent },
@@ -29,6 +28,8 @@ const routes: Routes = [
   { path: 'seller/delete/:id', component: DeleteSellerComponent },
   { path: 'seller/detail/:id', component: DetailSellerComponent },
   { path: 'seller/edit/:id', component: EditSellerComponent },
+
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
