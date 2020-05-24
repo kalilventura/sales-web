@@ -1,3 +1,6 @@
+import { EditSellerComponent } from './components/sellers/edit-seller/edit-seller.component';
+import { DetailSellerComponent } from './components/sellers/detail-seller/detail-seller.component';
+import { DeleteSellerComponent } from './components/sellers/delete-seller/delete-seller.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -12,13 +15,18 @@ import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+
   { path: 'department', component: ListDepartmentComponent },
   { path: 'department/create', component: CreateDepartmentComponent },
   { path: 'department/delete/:id', component: DeleteDepartmentComponent },
   { path: 'department/detail/:id', component: DetailDepartmentComponent },
   { path: 'department/edit/:id', component: EditDepartmentComponent },
+
   { path: 'seller', component: ListSellerComponent },
   { path: 'seller/create', component: CreateSellerComponent },
+  { path: 'seller/delete/:id', component: DeleteSellerComponent },
+  { path: 'seller/detail/:id', component: DetailSellerComponent },
+  { path: 'seller/edit/:id', component: EditSellerComponent },
 ];
 
 @NgModule({
